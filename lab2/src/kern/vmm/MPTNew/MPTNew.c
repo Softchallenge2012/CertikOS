@@ -1,0 +1,59 @@
+#include <lib/x86.h>
+
+#include "import.h"
+
+
+
+
+#define DIR_MASK    0xffc00000
+#define PAGE_MASK   0x003ff000
+#define OFFSET_MASK 0x00000fff
+
+
+/** TASK 1:
+  * * - This function will be called when there's no mapping found in the page structure
+  *     for the given virtual address [vaddr], e.g., by the page fault handler when
+  *     a page fault happened because the user process accessed a virtual address
+  *     that is not mapped yet.
+  *   - The task of this function is to allocate a physical page (container_alloc) and use it to register
+  *     the mapping for the virtual address with given permission (map_page).
+  *   - It should return the physical page index registered in the page directory, i.e., the
+  *     return value from map_page.
+  *   - In the case of error, it should return the MagicNumber.
+  */
+unsigned int alloc_page (unsigned int proc_index, unsigned int vaddr, unsigned int perm)
+{
+	// TODO
+
+
+
+  int pageDirectoryIndex = (DIR_MASK & vaddr)>>22;
+  int pageTableIndex = (PAGE_MASK & vaddr)>>12;
+
+  //dprintf("alloc page \n");
+
+  // map_page(unsigned int, unsigned int, unsigned int, unsigned int);
+
+  unsigned int pageindex = container_alloc(proc_index);
+
+  if(pageindex != 0){   
+     unsigned int mp =  map_page(proc_index, vaddr, pageindex, perm);
+     //dprintf("alloc new  page is done. %u \n", mp);
+     return mp;
+  }
+  else{ // error
+    return MagicNumber;
+  }
+}
+
+
+/**
+ * Designate some memory quota for the next child process.
+ */
+unsigned int alloc_mem_quota (unsigned int id, unsigned int quota)
+{
+	unsigned int child;
+	child = container_split (id, quota);
+	return child;
+}
+

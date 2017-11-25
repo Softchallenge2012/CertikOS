@@ -1,0 +1,101 @@
+The file system is implementated in the following eight layers.
+
+Buffer Cache layer
+------------------
+
+A buffer cache has two jobs:
+ * synchronize access to disk blocks to ensure that only one copy of a block is
+    in memory and that only one kernel thread at a time uses that copy, and
+ * cache popular blocks so that they don’t have to be re-read from the (slow)
+   disk.
+
+Files: bufcache.h, bufcache.c.
+Dependent files:
+ * params.h  -- filesystem parameters.
+ * kern/lib/buf.h  -- definition of buffer data structure.
+ * kern/dev/disk/ide.h  -- IDE disk driver, which reads and writes blocks on an
+   IDE hard drive.
+
+Block layer
+-----------
+
+This layer allocates raw disk blocks. The file system divides the disk blocks
+into several sections.  Block 0 holds the boot sector, so it cannot used by the
+file system. Block 1 is called the superblock. It contains metadata about the
+file system (the file system size in blocks, the number of data blocks, the
+number of inodes, and the number of blocks in the log). Blocks starting at 2
+hold inodes, with multiple inodes per block. After those come bitmap blocks
+tracking which data blocks are in use. Most of the remaining blocks are data
+blocks; each is either marked free in the bitmap block, or holds content for a
+file or directory. The blocks at the end of the disk hold the logging layer’s
+log.
+
+Files: block.h, block.c
+Underlays: bufcache.h
+Dependent files:
+ * stat.h  -- defines the file statistics data structure.
+ * dinode.h  -- defines the on-disk inode data structure, containing a size and
+   an array of block numbers.
+
+Log layer
+---------
+
+Simple version logging mechanism for crash recovery. It allows higher layers to
+wrap multi-step updates to several blocks in a single transaction, to ensure
+that blocks are updated atomically.
+
+Files: log.h, log.c
+Underlays: bufcache.h, block.h
+
+Inode layer
+-----------
+
+Inode allocator, reading, writing, metadata. This layer provides unnamed files,
+each represented using an inode and a sequence of blocks holding the file's
+data.
+
+Files: inode.h, inode.c
+Underlays: bufcache.h, log.h, block.h
+Dependent files:
+ * stat.h  -- defines the file statistics data structure
+
+Directory layer
+---------------
+
+A directory is an inode with special contents (i.e., a list of other
+inodes). Its inode has type T_DIR and its data is a sequence of directory
+entries. Each entry is a struct dirent, which contains a name and an inode
+number.
+
+Files: dir.h, dir.c
+Underlays: inode.h
+
+Path layer
+----------
+
+This layer provides paths like /kern/fs/file.c for convenient naming.
+
+Files: path.h, path.c
+Underlays: inode.h, dir.h
+
+File descriptor layer
+---------------------
+
+Each thread has its own table of open files, or file descriptors. A file
+descriptor is represented by a struct file, which is a wrapper around an inode.
+
+Files: file.h, file.c
+Underlays: inode.h, dir.h, path.h
+
+Syscalls
+--------
+
+The file-system system calls. Most of these syscall functions are just wrappers
+around the functions in the file descriptor layer, taking care of correctly
+fetching the syscall arguments.
+
+Files: sysfile.h, sysfile.c
+Underlays: inode.h, dir.h, path.h, file.h
+Dependent files:
+ * fcntl.h  -- defines file modes
+

@@ -1,0 +1,153 @@
+obj/user/lib/printf.o: user/lib/printf.c user/include/gcc.h \
+ user/include/types.h user/include/stdarg.h user/include/stdio.h \
+ user/include/syscall.h kern/lib/syscall.h user/include/debug.h \
+ user/include/proc.h user/include/x86.h user/include/string.h
+obj/kern/thread/PTQueueIntro/PTQueueIntro.o: \
+ kern/thread/PTQueueIntro/PTQueueIntro.c kern/lib/x86.h kern/lib/types.h
+obj/kern/dev/pic.o: kern/dev/pic.c kern/lib/trap.h kern/lib/types.h \
+ kern/lib/x86.h kern/dev/intr.h kern/dev/pic.h
+obj/kern/thread/PKCtxIntro/PKCtxIntro.o: \
+ kern/thread/PKCtxIntro/PKCtxIntro.c kern/lib/x86.h kern/lib/types.h
+obj/user/lib/atoi.o: user/lib/atoi.c user/include/stdlib.h
+obj/kern/thread/PCurID/PCurID.o: kern/thread/PCurID/PCurID.c
+obj/kern/lib/types.o: kern/lib/types.c kern/lib/types.h
+obj/kern/thread/PTCBInit/PTCBInit.o: kern/thread/PTCBInit/PTCBInit.c \
+ kern/lib/x86.h kern/lib/types.h kern/thread/PTCBInit/import.h
+obj/kern/lib/pmap.o: kern/lib/pmap.c kern/lib/pmap.h kern/lib/types.h \
+ kern/lib/string.h kern/lib/types.h
+obj/kern/init/entry.o: kern/init/entry.S
+obj/kern/lib/dprintf.o: kern/lib/dprintf.c kern/dev/console.h \
+ kern/dev/serial.h kern/lib/debug.h kern/lib/stdarg.h kern/lib/stdarg.h
+obj/kern/init/init.o: kern/init/init.c kern/lib/debug.h kern/lib/stdarg.h \
+ kern/lib/types.h kern/lib/monitor.h kern/thread/PThread/export.h
+obj/kern/vmm/MPTKern/MPTKern.o: kern/vmm/MPTKern/MPTKern.c kern/lib/x86.h \
+ kern/lib/types.h kern/lib/debug.h kern/lib/stdarg.h \
+ kern/vmm/MPTKern/import.h
+obj/kern/lib/debug.o: kern/lib/debug.c kern/lib/debug.h kern/lib/stdarg.h \
+ kern/lib/gcc.h kern/lib/stdarg.h kern/lib/x86.h kern/lib/types.h
+obj/user/pingpong/ding.o: user/pingpong/ding.c user/include/proc.h \
+ user/include/types.h user/include/stdio.h user/include/stdarg.h \
+ user/include/syscall.h kern/lib/syscall.h user/include/debug.h \
+ user/include/gcc.h user/include/x86.h user/include/string.h
+obj/kern/thread/PKCtxNew/PKCtxNew.o: kern/thread/PKCtxNew/PKCtxNew.c \
+ kern/lib/gcc.h kern/lib/x86.h kern/lib/types.h \
+ kern/thread/PKCtxNew/import.h
+obj/kern/lib/elf.o: kern/lib/elf.c kern/lib/debug.h kern/lib/stdarg.h \
+ kern/lib/elf.h kern/lib/types.h kern/lib/string.h kern/lib/types.h \
+ kern/lib/x86.h kern/lib/pmap.h kern/lib/gcc.h
+obj/kern/thread/PTCBIntro/PTCBIntro.o: kern/thread/PTCBIntro/PTCBIntro.c \
+ kern/lib/x86.h kern/lib/types.h kern/lib/thread.h
+obj/kern/lib/x86.o: kern/lib/x86.c kern/lib/types.h kern/lib/gcc.h \
+ kern/lib/string.h kern/lib/types.h kern/lib/x86.h
+obj/user/lib/proc.o: user/lib/proc.c user/include/proc.h \
+ user/include/types.h user/include/syscall.h kern/lib/syscall.h \
+ user/include/debug.h user/include/stdarg.h user/include/gcc.h \
+ user/include/x86.h user/include/string.h
+obj/user/pingpong/ping.o: user/pingpong/ping.c user/include/proc.h \
+ user/include/types.h user/include/stdio.h user/include/stdarg.h \
+ user/include/syscall.h kern/lib/syscall.h user/include/debug.h \
+ user/include/gcc.h user/include/x86.h user/include/string.h
+obj/kern/trap/TSyscall/TSyscall.o: kern/trap/TSyscall/TSyscall.c \
+ kern/lib/debug.h kern/lib/stdarg.h kern/lib/types.h kern/lib/x86.h \
+ kern/lib/trap.h kern/lib/syscall.h kern/trap/TSyscall/import.h
+obj/kern/dev/video.o: kern/dev/video.c kern/lib/string.h kern/lib/types.h \
+ kern/lib/x86.h kern/lib/types.h kern/lib/debug.h kern/lib/stdarg.h \
+ kern/dev/video.h
+obj/kern/dev/idt.o: kern/dev/idt.S kern/lib/seg.h kern/lib/trap.h \
+ kern/dev/intr.h
+obj/user/lib/entry.o: user/lib/entry.S
+obj/kern/pmm/MContainer/MContainer.o: kern/pmm/MContainer/MContainer.c \
+ kern/lib/debug.h kern/lib/stdarg.h kern/lib/x86.h kern/lib/types.h \
+ kern/pmm/MContainer/import.h
+obj/kern/pmm/MATIntro/MATIntro.o: kern/pmm/MATIntro/MATIntro.c \
+ kern/lib/gcc.h
+obj/kern/dev/intr.o: kern/dev/intr.c kern/lib/types.h kern/lib/debug.h \
+ kern/lib/stdarg.h kern/lib/seg.h kern/lib/gcc.h kern/lib/x86.h \
+ kern/dev/pic.h kern/dev/intr.h
+obj/user/lib/string.o: user/lib/string.c user/include/string.h \
+ user/include/types.h
+obj/kern/lib/seg.o: kern/lib/seg.c kern/lib/gcc.h kern/lib/x86.h \
+ kern/lib/types.h kern/lib/string.h kern/lib/types.h kern/lib/seg.h
+obj/kern/vmm/MPTComm/MPTComm.o: kern/vmm/MPTComm/MPTComm.c kern/lib/x86.h \
+ kern/lib/types.h kern/vmm/MPTComm/import.h
+obj/kern/trap/TSyscallArg/TSyscallArg.o: \
+ kern/trap/TSyscallArg/TSyscallArg.c kern/lib/trap.h kern/lib/types.h \
+ kern/lib/x86.h kern/trap/TSyscallArg/import.h
+obj/kern/dev/devinit.o: kern/dev/devinit.c kern/lib/x86.h \
+ kern/lib/types.h kern/lib/debug.h kern/lib/stdarg.h kern/lib/seg.h \
+ kern/lib/gcc.h kern/dev/console.h kern/dev/mboot.h kern/dev/intr.h \
+ kern/dev/tsc.h
+obj/kern/lib/printfmt.o: kern/lib/printfmt.c kern/lib/debug.h \
+ kern/lib/stdarg.h kern/lib/stdarg.h kern/lib/string.h kern/lib/types.h \
+ kern/lib/types.h
+obj/user/lib/printfmt.o: user/lib/printfmt.c user/include/types.h \
+ user/include/stdarg.h user/include/string.h user/include/stdio.h \
+ user/include/syscall.h kern/lib/syscall.h user/include/debug.h \
+ user/include/gcc.h user/include/proc.h user/include/x86.h
+obj/kern/vmm/MPTIntro/MPTIntro.o: kern/vmm/MPTIntro/MPTIntro.c \
+ kern/lib/gcc.h kern/lib/x86.h kern/lib/types.h kern/lib/debug.h \
+ kern/lib/stdarg.h kern/vmm/MPTIntro/import.h
+obj/user/pingpong/pong.o: user/pingpong/pong.c user/include/proc.h \
+ user/include/types.h user/include/stdio.h user/include/stdarg.h \
+ user/include/syscall.h kern/lib/syscall.h user/include/debug.h \
+ user/include/gcc.h user/include/x86.h user/include/string.h
+obj/user/idle/idle.o: user/idle/idle.c user/include/proc.h \
+ user/include/types.h user/include/stdio.h user/include/stdarg.h \
+ user/include/syscall.h kern/lib/syscall.h user/include/debug.h \
+ user/include/gcc.h user/include/x86.h user/include/string.h
+obj/kern/dev/mboot.o: kern/dev/mboot.c kern/lib/debug.h kern/lib/stdarg.h \
+ kern/lib/x86.h kern/lib/types.h kern/lib/gcc.h kern/lib/queue.h \
+ kern/dev/mboot.h
+obj/kern/proc/PUCtxIntro/PUCtxIntro.o: kern/proc/PUCtxIntro/PUCtxIntro.c \
+ kern/lib/trap.h kern/lib/types.h kern/lib/x86.h
+obj/kern/thread/PTQueueInit/PTQueueInit.o: \
+ kern/thread/PTQueueInit/PTQueueInit.c kern/lib/x86.h kern/lib/types.h \
+ kern/thread/PTQueueInit/import.h
+obj/user/lib/spinlock.o: user/lib/spinlock.c user/include/spinlock.h \
+ user/include/types.h
+obj/kern/lib/string.o: kern/lib/string.c kern/lib/string.h \
+ kern/lib/types.h
+obj/kern/dev/console.o: kern/dev/console.c kern/lib/string.h \
+ kern/lib/types.h kern/lib/types.h kern/lib/debug.h kern/lib/stdarg.h \
+ kern/dev/video.h kern/dev/console.h kern/dev/serial.h \
+ kern/dev/keyboard.h
+obj/kern/thread/PKCtxIntro/cswitch.o: kern/thread/PKCtxIntro/cswitch.S
+obj/kern/pmm/MATInit/MATInit.o: kern/pmm/MATInit/MATInit.c \
+ kern/lib/debug.h kern/lib/stdarg.h kern/pmm/MATInit/import.h
+obj/kern/proc/PProc/PProc.o: kern/proc/PProc/PProc.c kern/lib/elf.h \
+ kern/lib/types.h kern/lib/debug.h kern/lib/stdarg.h kern/lib/gcc.h \
+ kern/lib/seg.h kern/lib/trap.h kern/lib/x86.h kern/proc/PProc/import.h
+obj/kern/dev/timer.o: kern/dev/timer.c kern/lib/types.h kern/lib/x86.h \
+ kern/dev/timer.h
+obj/kern/thread/PThread/PThread.o: kern/thread/PThread/PThread.c \
+ kern/lib/x86.h kern/lib/types.h kern/lib/thread.h \
+ kern/thread/PThread/import.h
+obj/kern/trap/TTrapHandler/TTrapHandler.o: \
+ kern/trap/TTrapHandler/TTrapHandler.c kern/lib/string.h kern/lib/types.h \
+ kern/lib/trap.h kern/lib/types.h kern/lib/syscall.h kern/lib/debug.h \
+ kern/lib/stdarg.h kern/lib/x86.h kern/dev/intr.h kern/vmm/MPTOp/export.h \
+ kern/trap/TTrapHandler/import.h
+obj/kern/dev/keyboard.o: kern/dev/keyboard.c kern/lib/types.h \
+ kern/dev/keyboard.h
+obj/kern/dev/tsc.o: kern/dev/tsc.c kern/lib/types.h kern/lib/debug.h \
+ kern/lib/stdarg.h kern/lib/x86.h kern/dev/timer.h kern/dev/tsc.h
+obj/user/lib/debug.o: user/lib/debug.c user/include/proc.h \
+ user/include/types.h user/include/stdarg.h user/include/stdio.h \
+ user/include/syscall.h kern/lib/syscall.h user/include/debug.h \
+ user/include/gcc.h user/include/x86.h user/include/string.h
+obj/kern/vmm/MPTInit/MPTInit.o: kern/vmm/MPTInit/MPTInit.c \
+ kern/vmm/MPTInit/import.h
+obj/kern/vmm/MPTNew/MPTNew.o: kern/vmm/MPTNew/MPTNew.c kern/lib/x86.h \
+ kern/lib/types.h kern/vmm/MPTNew/import.h
+obj/kern/trap/TDispatch/TDispatch.o: kern/trap/TDispatch/TDispatch.c \
+ kern/lib/syscall.h kern/trap/TDispatch/import.h
+obj/kern/lib/monitor.o: kern/lib/monitor.c kern/lib/debug.h \
+ kern/lib/stdarg.h kern/lib/types.h kern/lib/gcc.h kern/lib/string.h \
+ kern/lib/types.h kern/lib/x86.h kern/lib/thread.h kern/lib/monitor.h \
+ kern/dev/console.h
+obj/kern/vmm/MPTOp/MPTOp.o: kern/vmm/MPTOp/MPTOp.c kern/lib/x86.h \
+ kern/lib/types.h kern/vmm/MPTOp/import.h
+obj/kern/dev/serial.o: kern/dev/serial.c kern/lib/types.h kern/lib/x86.h \
+ kern/dev/console.h kern/dev/serial.h
+obj/kern/pmm/MATOp/MATOp.o: kern/pmm/MATOp/MATOp.c kern/lib/debug.h \
+ kern/lib/stdarg.h kern/pmm/MATOp/import.h

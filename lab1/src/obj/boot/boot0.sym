@@ -1,0 +1,14 @@
+00007c00 a BOOT0
+00007c00 T start
+00007c20 t set_video_mode
+00007c2b t load_boot1
+00007c47 t spin
+00007c48 t putstr
+00007c4b t putstr.1
+00007c54 t putstr.2
+00007c56 t STARTUP_MSG
+00007c68 t LOAD_FAIL_MSG
+00007c86 T __bss_start
+00007c86 T _edata
+00007c88 T _end
+00007e00 a BOOT1
